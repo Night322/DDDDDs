@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บสุดยอด by.DDDDD</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            color: #00ff00;
+            margin-top: 50px;
+            font-size: 3em;
+            text-shadow: 0 0 10px #00ff00;
+            position: relative;
+            z-index: 10;
+        }
+        .button {
+            background-color: #000;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            margin: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            text-shadow: 0 0 5px #00ff00;
+            position: relative;
+            z-index: 10;
+        }
+        .button:hover {
+            background-color: #00ff00;
+            color: #000;
+            text-shadow: none;
+        }
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(0, 255, 0, 0.7);
+            animation: scan 3s infinite;
+            top: 0;
+            z-index: 5;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .code-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .code {
+            color: rgba(0, 255, 0, 0.2);
+            font-size: 14px;
+            white-space: nowrap;
+            line-height: 1.5em;
+            animation: scroll 20s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <h1>กดปุ่มนี้สิ</h1>
+    <button class="button" onclick="playLoudSound()">กดเพื่อเจอแม่วิกร</button>
+    <div class="scanline"></div>
+    <div class="code-background">
+        <div class="code">
+            01100110 10101100 11011100 00110011 11100011 01010101<br>
+            11001100 00110101 10001011 11101000 11001111 01110110<br>
+            01010010 11001111 00011110 11101001 10110101 01000111<br>
+            11100111 01011101 00101011 10011110 00110111 10101111<br>
+            01100110 01010100 11101011 10100101 11011110 01001101<br>
+            11001010 00010101 11101111 00101010 10011001 01011000<br>
+            00101111 11100010 01001011 10101010 11001100 01100101<br>
+        </div>
+    </div>
+
+    <script>
+        // ส่งคำขอไปยัง PHP เพื่อเก็บข้อมูล IP
+        fetch('log.php', {
+            method: 'GET'
+        });
+
+        function playLoudSound() {
+            const audio = new Audio('your-sound-file.mp3');
+            audio.volume = 1.0;
+            audio.play();
+        }
+    </script>
+</body>
+</html>
